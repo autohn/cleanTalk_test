@@ -694,7 +694,6 @@ wordpress/wp-content/themes/twentytwentyone/404.php
 wordpress/wp-content/themes/twentytwentyone/archive.php
 wordpress/wp-content/themes/twentytwentyone/comments.php
 wordpress/wp-content/themes/twentytwentyone/image.php
-wordpress/wp-content/themes/twentytwentyone/index.php
 wordpress/wp-content/themes/twentytwentyone/package-lock.json
 wordpress/wp-content/themes/twentytwentyone/package.json
 wordpress/wp-content/themes/twentytwentyone/page.php
@@ -3034,3 +3033,7 @@ wordpress/wp-includes/widgets/class-wp-widget-tag-cloud.php
 wordpress/wp-includes/widgets/class-wp-widget-text.php
 wordpress/composer.json
 wordpress/composer.lock
+wordpress/wp-content/themes/twentytwentyone/dist/index.html
+wordpress/wp-content/themes/twentytwentyone/dist/vite.svg
+wordpress/wp-content/themes/twentytwentyone/dist/assets/index-3fb98c9d.js
+wordpress/wp-content/themes/twentytwentyone/dist/assets/index-29f81836.css

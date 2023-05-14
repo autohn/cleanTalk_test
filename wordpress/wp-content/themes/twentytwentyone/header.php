@@ -30,7 +30,6 @@
 		?>
 	</a>
 
-	<?php get_template_part( 'template-parts/header/site-header' ); ?>
 
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">

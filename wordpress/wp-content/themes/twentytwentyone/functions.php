@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
 /**
  * Functions and definitions
  *
@@ -654,3 +656,65 @@ if ( ! function_exists( 'wp_get_list_item_separator' ) ) :
 		return __( ', ', 'twentytwentyone' );
 	}
 endif;
+
+
+add_action('rest_api_init', function () {
+  register_rest_route('myplugin/v1', '/trilateration/', array(
+    'methods' => 'POST', // change this to POST
+    'callback' => 'trilateration',
+  ));
+});
+
+use Tuupola\Trilateration\Intersection;
+use Tuupola\Trilateration\Sphere;
+
+function trilateration(WP_REST_Request $data) { // use WP_REST_Request type hint for better autocompletion
+
+try
+{
+   	// retrieve data from POST request
+   	$PointA = $data->get_param('PointA');
+   	$PointB = $data->get_param('PointB');
+   	$PointC = $data->get_param('PointC');
+
+   	$sphere1 = new Sphere($PointA['latitude'], $PointA['longitude'], $PointA['distance']);
+	$sphere2 = new Sphere($PointB['latitude'], $PointB['longitude'], $PointB['distance']);
+	$sphere3 = new Sphere($PointC['latitude'], $PointC['longitude'], $PointC['distance']);
+
+	$trilateration = new Intersection($sphere1, $sphere2, $sphere3);
+	$point = $trilateration->position();
+
+    $response = array(
+        'latitude' => $point->latitude(),
+        'longitude' => $point->longitude()
+    );
+
+    return $response;
+       
+}
+catch(Throwable $ex)
+{
+    print_r($ex);
+	return 1;
+}
+
+}
+
+/* function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+}
+add_action('rest_api_init', 'add_cors_http_header');
+ */
+
+
+function enqueue_my_react_app() {
+    wp_enqueue_script(
+        'my-react-app', 
+        get_stylesheet_directory_uri() . '/dist/assets/index-bc5d6182.js', 
+        ['wp-element'], 
+        time(), // For versioning, can be replaced with your version number
+        true // Enqueue the script in the footer
+    );
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_my_react_app');
