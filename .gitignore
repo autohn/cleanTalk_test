@@ -2,7 +2,6 @@
 /.my-code
 react_src/dist/
 
-docker-compose.yml
 wordpress/.htaccess
 wordpress/index.php
 wordpress/license.txt
