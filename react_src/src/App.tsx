@@ -24,12 +24,12 @@ export default function App() {
     };
     const data = await (
       await fetch(
-        "http://localhost:8080/wp-json/myplugin/v1/trilateration",
+        "http://94.103.95.97:80/wp-json/myplugin/v1/trilateration",
         requestOptions
       )
     ).json();
 
-    if (data) {
+    if (typeof data === "object" && data.latitude && data.longitude) {
       store.setTrilaterationResult(data);
     }
   };

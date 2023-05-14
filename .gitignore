@@ -1,5 +1,6 @@
-/cleantalk_test
-/my-code
+/.cleantalk_test
+/.my-code
+react_src/dist/
 
 docker-compose.yml
 wordpress/.htaccess
@@ -3037,3 +3038,4 @@ wordpress/wp-content/themes/twentytwentyone/dist/index.html
 wordpress/wp-content/themes/twentytwentyone/dist/vite.svg
 wordpress/wp-content/themes/twentytwentyone/dist/assets/index-3fb98c9d.js
 wordpress/wp-content/themes/twentytwentyone/dist/assets/index-29f81836.css
+react_src/dist/vite.svg
